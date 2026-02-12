@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html>
-<body 
-  style="background-color: powderblue; text-align: center;">
+<body style="background-color: powderblue; text-align: center;">
 
-<h1>Do you love me?</h1>
+<h1 id="question">Do you love me?</h1>
 
-<img src="cute_cat.gif" 
+<img id="mainImage" src="cute_cat.gif"
      style="width: 250px; margin: 20px 0; border-radius: 10px;">
 
 <br>
-  
-<button style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px;">
+
+<button onclick="answerYes()" 
+        style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px;">
   Yes
 </button>
 
-<button style="background-color: red; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
+<button onclick="answerNo()" 
+        style="background-color: red; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
   No
 </button>
 
+<script>
+function answerYes() {
+  document.getElementById("question").innerText = "Are you sure? ❤️";
+  document.getElementById("mainImage").src = "happy.gif";
+}
+
+function answerNo() {
+  document.getElementById("question").innerText = "Try Again";
+  document.getElementById("mainImage").src = "mad.gif";
+}
+</script>
 
 </body>
 </html>
