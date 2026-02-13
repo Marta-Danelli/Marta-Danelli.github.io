@@ -8,6 +8,28 @@
 
 <h2 id="question_2"></h2>
 
+<div id="buttons">
+  <button id="yes" button onclick="choose('yes')" 
+          style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px;">
+    Yes
+  </button>
+
+  <button id="no" button onclick="choose('no')" 
+          style="background-color: red; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
+    No
+  </button>
+
+<button id="start" button onclick="choose('start')" 
+          style="background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
+    Start Again
+  </button>
+     
+<button id="next" button onclick="choose('next')" 
+          style="background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
+    Next
+  </button>
+</div>
+
 <script>
 let currentQuestion = "q1";
 
@@ -25,6 +47,10 @@ const questions = {
   qCactus: {
     text: "Ciao! Io sono BOB il Cactus",
     text_2: "Vuoi cambiare pianta?",
+    yes: "q1",
+    no: "qNext",
+    start: null,
+    next: null,
     options: [
       { img: "cactus1.jpg" }
     ]
@@ -33,6 +59,10 @@ const questions = {
   qAloe: {
     text: "Ciao! Sono Lola l'Aloe",
     text_2: "Vuoi cambiare pianta?",
+    yes: "q1",
+    no: "qNext",
+    start: null,
+    next: null,
     options: [
       { img: "aloe.jpg" }
     ]
@@ -41,16 +71,45 @@ const questions = {
   qSan: {
     text: "Ciao! Sono Vera la Sansevieria",
     text_2: "Vuoi cambiare pianta?",
+    yes: "q1",
+    no: "qNext",
+    start: null,
+    next: null,
     options: [
       { img: "san.jpg" }
     ]
-  }
+  },
+
+  qNext: {
+  text: "temp",
+  text_2: null,
+  yes: "q1",
+  no: "qNext",
+  start: null,
+  next: null,
+  options: [
+    { img: "" }
+  ]
+}
 };
 
 function loadQuestion() {
   const q = questions[currentQuestion];
   document.getElementById("question").innerText = q.text;
   document.getElementById("question_2").innerText = q.text_2;
+
+  // Show or hide each button depending on whether it exists
+  document.getElementById("yes").style.display =
+    q.yes ? "inline-block" : "none";
+
+  document.getElementById("no").style.display =
+    q.no ? "inline-block" : "none";
+
+  document.getElementById("start").style.display =
+    q.start ? "inline-block" : "none";
+
+  document.getElementById("next").style.display =
+    q.next ? "inline-block" : "none";
 
   const container = document.getElementById("imageContainer");
   container.innerHTML = ""; // pulisco il contenitore
