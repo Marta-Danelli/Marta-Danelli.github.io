@@ -3,10 +3,11 @@
 <body style="background-color: lightgreen; text-align: center; font-family: Arial;">
 
 <h1 id="question"></h1>
-<h2 id="question_2"></h2>
 
 <div id="imageContainer"></div>
 
+<h2 id="question_2"></h2>
+  
 <div id="buttons">
   <button id="yes" onclick="choose('yes')" 
           style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px;">
@@ -44,11 +45,11 @@ const questions = {
   },
   qIntro: {
     text: "Tanto tanto (MA TANTO) tempo fa... \nIn un regno molto molto lontano e sperduto nelle valli, \nviveva una ragazza che amava le piante",
-    text_2: "Ogni riferimento a Bergamo è puramente casuale",
+    text_2: "*Ogni riferimento a Bergamo è puramente casuale",
     yes: null,
     no: null,
-    start: "q1",
-    next: null,
+    start: null,
+    next: "q1",
     options: [{img: "giulia.jpg"}]
   },
   q1: {
@@ -68,9 +69,7 @@ const questions = {
     start: null,
     next: null,
     options: [
-      { img: "cactus1.jpg", next: "qNext" },
-      { img: "aloe.jpg", next: "qAloe" },
-      { img: "san.jpg", next: "qSan" }
+      { img: "cactus1.jpg", next: "qNext" }
     ]
   },
   qAloe: {
@@ -81,9 +80,7 @@ const questions = {
     start: null,
     next: null,
     options: [
-      { img: "aloe.jpg", next: "qNext" },
-      { img: "cactus1.jpg", next: "qCactus" },
-      { img: "san.jpg", next: "qSan" }
+      { img: "aloe.jpg", next: "qNext" }
     ]
   },
   qSan: {
@@ -94,9 +91,7 @@ const questions = {
     start: null,
     next: null,
     options: [
-      { img: "san.jpg", next: "qNext" },
-      { img: "cactus1.jpg", next: "qCactus" },
-      { img: "aloe.jpg", next: "qAloe" }
+      { img: "san.jpg", next: "qNext" }
     ]
   },
   qNext: {
