@@ -44,17 +44,26 @@ const questions = {
     options: [{img: "main.jpg"}]
   },
   qIntro: {
-    text: "Tanto tanto (MA TANTO) tempo fa... \nIn un regno molto molto lontano e sperduto nelle valli, \nviveva una ragazza che amava le piante",
+    text: "Tanto tanto (MA TANTO) tempo fa... \nIn un regno molto molto lontano e sperduto nelle valli, \nviveva una ragazza di nome Giulia",
     text_2: "*Ogni riferimento a Bergamo è puramente casuale",
     yes: null,
     no: null,
     start: null,
-    next: "q1",
+    next: "qchap1",
     options: [{img: "giulia.jpg"}]
   },
-  q1: {
-    text: "Scegli la tua pianta:",
-    text_2: null,
+  qchap1: {
+    text: "Giulia odiava le persone che rompevano le palle per niente,  \nma adorava le sue belle piantine che crescevano, diventavano bellissime e non erano mai fastidiose",
+    text_2: "",
+    yes: null,
+    no: null,
+    start: null,
+    next: "qchap2",
+    options: [{img: "giulia.jpg"}]
+  },
+  qchap2: {
+    text: "In particolare, adorava tre piantine che, grazie ad un antico sortilegio, potevano parlare",
+    text_2: "scegli una piantina con cui parlare:",
     options: [
       { img: "cactus1.jpg", next: "qCactus" },
       { img: "aloe.jpg", next: "qAloe" },
@@ -62,10 +71,10 @@ const questions = {
     ]
   },
   qCactus: {
-    text: "Ciao! Io sono BOB il Cactus",
-    text_2: "Vuoi cambiare pianta?",
+    text: "Ciao! Sono BOB il Cactus",
+    text_2: "Vuoi parlare con un'altra pianta?",
     yes: "q1",
-    no: "qNext",
+    no: "qchap3",
     start: null,
     next: null,
     options: [
@@ -74,9 +83,9 @@ const questions = {
   },
   qAloe: {
     text: "Ciao! Sono Lola l'Aloe",
-    text_2: "Vuoi cambiare pianta?",
+    text_2: "Vuoi parlare con un'altra pianta?",
     yes: "q1",
-    no: "qNext",
+    no: "qchap3",
     start: null,
     next: null,
     options: [
@@ -85,17 +94,17 @@ const questions = {
   },
   qSan: {
     text: "Ciao! Sono Vera la Sansevieria",
-    text_2: "Vuoi cambiare pianta?",
+    text_2: "Vuoi parlare con un'altra pianta?",
     yes: "q1",
-    no: "qNext",
+    no: "qchap3",
     start: null,
     next: null,
     options: [
       { img: "san.jpg", next: "qNext" }
     ]
   },
-  qNext: {
-    text: "E ora comincia la tua avventura magica con la pianta scelta! 🌸",
+  qchap3: {
+    text: "Un bel giorno, le piantine decisero ",
     text_2: null,
     yes: null,
     no: null,
