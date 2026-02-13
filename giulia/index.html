@@ -1,77 +1,71 @@
-
 <!DOCTYPE html>
 <html>
-<body style="background-color: green; text-align: center; font-family: Arial;">
+<body style="background-color: lightgreen; text-align: center; font-family: Arial;">
 
 <h1 id="question"></h1>
 
-<img id="mainImage"
-     style="width: 250px; margin: 20px 0; border-radius: 10px;">
-
-<br>
-
-<div id="buttons">
-  <button id="cactusBtn" onclick="choose('cactus')"> Cactus</button>
-  <button id="monsteraBtn" onclick="choose('monstera')"> Monstera</button>
-  <button id="flowerBtn" onclick="choose('flower')"> Fiore</button>
-</div>
+<div id="imageContainer"></div>
 
 <script>
-
 let currentQuestion = "q1";
 
 const questions = {
   q1: {
-    text: "Benvenuta! \nScegli la tua pianta:",
-    image: "plants_intro.jpg",
-    cactus: "qCactus",
-    monstera: "qMonstera",
-    flower: "qFlower"
+    text: "Benvenuta 🌿\nScegli la tua pianta:",
+    options: [
+      { img: "cactus1.jpg", next: "qCactus" },
+      { img: "aloe.jpg", next: "qAloe" },
+      { img: "san.jpg", next: "qSan" }
+    ]
   },
 
   qCactus: {
-    text: "Hai scelto il cactus 🌵\nForte e indipendente, proprio come te.",
-    image: "cactus.jpg"
+    text: "Ciao! Io sono BOB il Cactus 🌵",
+    options: [
+      { img: "cactus1.jpg" }
+    ]
   },
 
-  qMonstera: {
-    text: "Hai scelto la monstera 🌿\nElegante e piena di energia.",
-    image: "monstera.jpg"
+  qAloe: {
+    text: "Ciao! Sono Lola l'Aloe 🌿",
+    options: [
+      { img: "aloe.jpg" }
+    ]
   },
 
-  qFlower: {
-    text: "Hai scelto il fiore 🌸\nDelicata ma capace di illuminare tutto.",
-    image: "flower.jpg"
+  qSan: {
+    text: "Ciao! Sono Vera la Sansevieria 🌱",
+    options: [
+      { img: "san.jpg" }
+    ]
   }
 };
 
 function loadQuestion() {
   const q = questions[currentQuestion];
-
   document.getElementById("question").innerText = q.text;
-  document.getElementById("mainImage").src = q.image || "";
 
-  // Hide all buttons first
-  document.getElementById("cactusBtn").style.display = "none";
-  document.getElementById("monsteraBtn").style.display = "none";
-  document.getElementById("flowerBtn").style.display = "none";
+  const container = document.getElementById("imageContainer");
+  container.innerHTML = ""; // pulisco il contenitore
 
-  // Show only available choices
-  if (q.cactus) document.getElementById("cactusBtn").style.display = "inline-block";
-  if (q.monstera) document.getElementById("monsteraBtn").style.display = "inline-block";
-  if (q.flower) document.getElementById("flowerBtn").style.display = "inline-block";
-}
-
-function choose(answer) {
-  const next = questions[currentQuestion][answer];
-  if (next) {
-    currentQuestion = next;
-    loadQuestion();
-  }
+  q.options.forEach(option => {
+    const img = document.createElement("img");
+    img.src = option.img;
+    img.style.width = "200px";
+    img.style.margin = "15px";
+    img.style.borderRadius = "10px";
+    img.style.cursor = "pointer";
+    img.onclick = () => {
+      if (option.next) {
+        currentQuestion = option.next;
+        loadQuestion();
+      }
+    };
+    container.appendChild(img);
+  });
 }
 
 loadQuestion();
-
 </script>
 
 </body>
