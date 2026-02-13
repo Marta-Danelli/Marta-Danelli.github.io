@@ -85,18 +85,66 @@ const questions = {
   },
   q7: {
     text: "Do you wanna know what I love about you?",
-    image: "",
+    image: "hat.jpg",
     yes: "q8",
     no: "q9",
     start: null,
     next: null
   },
   q8: {
-    text: "I love you hugs  ",
-    image: "",
-    yes: "q8",
-    no: "q9",
+    text: "I love your hugs...",
+    image: "hug.jpg",
+    yes: null,
+    no: null,
     start: null,
+    next: "q10"
+  },
+  q9: {
+    text: "Seriously?",
+    image: "cry.jpg",
+    yes: null,
+    no: null,
+    start: null,
+    next: "q7"
+  },
+  q10: {
+    text: "I love when we spend time together",
+    image: "play.jpg",
+    yes: null,
+    no: null,
+    start: null,
+    next: "q11"
+  },
+  q11: {
+    text: "I love when we are fat together",
+    image: "eat.jpg",
+    yes: null,
+    no: null,
+    start: null,
+    next: "q12"
+  },
+  q12: {
+    text: "I love when we are silly together",
+    image: "fart.jpg",
+    yes: null,
+    no: null,
+    start: null,
+    next: "q13"
+  },
+  q13: {
+    text: "I love when we relax together",
+    image: "knit.jpg",
+    yes: null,
+    no: null,
+    start: null,
+    next: "q14"
+  },
+  q14: {
+    text: "but most of all...I LOVE yOU!",
+    image: "kiss.gif",
+    yes: null,
+    no: null,
+    start: "q1",
     next: null
   }
 };
