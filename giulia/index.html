@@ -3,28 +3,27 @@
 <body style="background-color: lightgreen; text-align: center; font-family: Arial;">
 
 <h1 id="question"></h1>
+<h2 id="question_2"></h2>
 
 <div id="imageContainer"></div>
 
-<h2 id="question_2"></h2>
-
 <div id="buttons">
-  <button id="yes" button onclick="choose('yes')" 
+  <button id="yes" onclick="choose('yes')" 
           style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px;">
     Yes
   </button>
 
-  <button id="no" button onclick="choose('no')" 
+  <button id="no" onclick="choose('no')" 
           style="background-color: red; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
     No
   </button>
 
-<button id="start" button onclick="choose('start')" 
+  <button id="start" onclick="choose('start')" 
           style="background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
     Start
   </button>
      
-<button id="next" button onclick="choose('next')" 
+  <button id="next" onclick="choose('next')" 
           style="background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;">
     Next
   </button>
@@ -44,7 +43,7 @@ const questions = {
     options: [{img: "main.jpg"}]
   },
   qIntro: {
-    text: "Tanto tanto (MA TANTO) tempo fa... \nIn un regno molto molto lontano e sperduto nelle valli, \n Viveva una ragazza che amava le piante",
+    text: "Tanto tanto (MA TANTO) tempo fa... \nIn un regno molto molto lontano e sperduto nelle valli, \nviveva una ragazza che amava le piante",
     text_2: "Ogni riferimento a Bergamo è puramente casuale",
     yes: null,
     no: null,
@@ -61,7 +60,6 @@ const questions = {
       { img: "san.jpg", next: "qSan" }
     ]
   },
-
   qCactus: {
     text: "Ciao! Io sono BOB il Cactus",
     text_2: "Vuoi cambiare pianta?",
@@ -70,10 +68,11 @@ const questions = {
     start: null,
     next: null,
     options: [
-      { img: "cactus1.jpg" }
+      { img: "cactus1.jpg", next: "qNext" },
+      { img: "aloe.jpg", next: "qAloe" },
+      { img: "san.jpg", next: "qSan" }
     ]
   },
-
   qAloe: {
     text: "Ciao! Sono Lola l'Aloe",
     text_2: "Vuoi cambiare pianta?",
@@ -82,10 +81,11 @@ const questions = {
     start: null,
     next: null,
     options: [
-      { img: "aloe.jpg" }
+      { img: "aloe.jpg", next: "qNext" },
+      { img: "cactus1.jpg", next: "qCactus" },
+      { img: "san.jpg", next: "qSan" }
     ]
   },
-
   qSan: {
     text: "Ciao! Sono Vera la Sansevieria",
     text_2: "Vuoi cambiare pianta?",
@@ -94,43 +94,34 @@ const questions = {
     start: null,
     next: null,
     options: [
-      { img: "san.jpg" }
+      { img: "san.jpg", next: "qNext" },
+      { img: "cactus1.jpg", next: "qCactus" },
+      { img: "aloe.jpg", next: "qAloe" }
     ]
   },
-
   qNext: {
-  text: "temp",
-  text_2: null,
-  yes: "q1",
-  no: "qNext",
-  start: null,
-  next: null,
-  options: [
-    { img: "" }
-  ]
-}
+    text: "E ora comincia la tua avventura magica con la pianta scelta! 🌸",
+    text_2: null,
+    yes: null,
+    no: null,
+    start: null,
+    next: null,
+    options: []
+  }
 };
 
 function loadQuestion() {
   const q = questions[currentQuestion];
   document.getElementById("question").innerText = q.text;
-  document.getElementById("question_2").innerText = q.text_2;
+  document.getElementById("question_2").innerText = q.text_2 || "";
 
-  // Show or hide each button depending on whether it exists
-  document.getElementById("yes").style.display =
-    q.yes ? "inline-block" : "none";
-
-  document.getElementById("no").style.display =
-    q.no ? "inline-block" : "none";
-
-  document.getElementById("start").style.display =
-    q.start ? "inline-block" : "none";
-
-  document.getElementById("next").style.display =
-    q.next ? "inline-block" : "none";
+  document.getElementById("yes").style.display = q.yes ? "inline-block" : "none";
+  document.getElementById("no").style.display = q.no ? "inline-block" : "none";
+  document.getElementById("start").style.display = q.start ? "inline-block" : "none";
+  document.getElementById("next").style.display = q.next ? "inline-block" : "none";
 
   const container = document.getElementById("imageContainer");
-  container.innerHTML = ""; // pulisco il contenitore
+  container.innerHTML = "";
 
   q.options.forEach(option => {
     const img = document.createElement("img");
@@ -147,6 +138,15 @@ function loadQuestion() {
     };
     container.appendChild(img);
   });
+}
+
+function choose(answer) {
+  const q = questions[currentQuestion];
+  const next = q[answer];
+  if (next) {
+    currentQuestion = next;
+    loadQuestion();
+  }
 }
 
 loadQuestion();
