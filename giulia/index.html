@@ -6,6 +6,8 @@
 
 <div id="imageContainer"></div>
 
+<h1 id="question_2"></h1>
+
 <script>
 let currentQuestion = "q1";
 
@@ -20,21 +22,24 @@ const questions = {
   },
 
   qCactus: {
-    text: "Ciao! Io sono BOB il Cactus 🌵",
+    text: "Ciao! Io sono BOB il Cactus",
+    text_2: "Vuoi cambiare pianta?",
     options: [
       { img: "cactus1.jpg" }
     ]
   },
 
   qAloe: {
-    text: "Ciao! Sono Lola l'Aloe 🌿",
+    text: "Ciao! Sono Lola l'Aloe",
+    text_2: "Vuoi cambiare pianta?"
     options: [
       { img: "aloe.jpg" }
     ]
   },
 
   qSan: {
-    text: "Ciao! Sono Vera la Sansevieria 🌱",
+    text: "Ciao! Sono Vera la Sansevieria",
+    text_2: "Vuoi cambiare pianta?"
     options: [
       { img: "san.jpg" }
     ]
@@ -44,6 +49,7 @@ const questions = {
 function loadQuestion() {
   const q = questions[currentQuestion];
   document.getElementById("question").innerText = q.text;
+  document.getElementById("question_2").innerText = q.text_2;
 
   const container = document.getElementById("imageContainer");
   container.innerHTML = ""; // pulisco il contenitore
