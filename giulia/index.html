@@ -62,8 +62,21 @@ const questions = {
     options: [{img: "giulia.jpg"}]
   },
   qchap2: {
-    text: "In particolare, adorava tre piantine che, grazie ad un antico sortilegio, potevano parlare",
-    text_2: "scegli una piantina con cui parlare:",
+    text: "Un bel giorno, Giulia trovò tre piantine magiche che, grazie ad un antico sortilegio, potevano parlare",
+    text_2: "",
+    yes: null,
+    no: null,
+    start: null,
+    next: "qchap3",
+    options: [{img: "giulia.jpg"}]
+  },
+  qchap3: {
+    text: "Dato che quel giorno era proprio il compleanno di Giulia, le tre piantine decisero di farle un magico regalo",
+    text_2: "",
+    yes: null,
+    no: null,
+    start: null,
+    next: null,
     options: [
       { img: "cactus1.jpg", next: "qCactus" },
       { img: "aloe.jpg", next: "qAloe" },
@@ -71,46 +84,60 @@ const questions = {
     ]
   },
   qCactus: {
-    text: "Ciao! Sono BOB il Cactus",
-    text_2: "Vuoi parlare con un'altra pianta?",
-    yes: "q1",
-    no: "qchap3",
+    text: "Buon compleanno Giulia! Sono BOB il Cactus! \nIo ti donerò l'allergia ai Gatti!",
+    text_2: "",
+    yes: null,
+    no: null,
     start: null,
-    next: null,
     options: [
-      { img: "cactus1.jpg", next: "qNext" }
+      { img: "cactus1.jpg", next: "qselect" }
     ]
   },
   qAloe: {
-    text: "Ciao! Sono Lola l'Aloe",
-    text_2: "Vuoi parlare con un'altra pianta?",
-    yes: "q1",
-    no: "qchap3",
-    start: null,
-    next: null,
-    options: [
-      { img: "aloe.jpg", next: "qNext" }
-    ]
-  },
-  qSan: {
-    text: "Ciao! Sono Vera la Sansevieria",
-    text_2: "Vuoi parlare con un'altra pianta?",
-    yes: "q1",
-    no: "qchap3",
-    start: null,
-    next: null,
-    options: [
-      { img: "san.jpg", next: "qNext" }
-    ]
-  },
-  qchap3: {
-    text: "Un bel giorno, le piantine decisero ",
-    text_2: null,
+    text: "Tanti Auguri! Sono Lola l'Aloe! \nIo ti donerò lo starnuto eterno in Primavera",
+    text_2: "",
     yes: null,
     no: null,
     start: null,
     next: null,
-    options: []
+    options: [
+      { img: "aloe.jpg", next: "qselect" }
+    ]
+  },
+  qSan: {
+    text: "Ciao! Sono Vera la Sansevieria",
+    text_2: "",
+    yes: null,
+    no: null,
+    start: null,
+    next: null,
+    options: [
+      { img: "san.jpg", next: "qselect" }
+    ]
+  },
+  qselect: {
+    text: "Scopri quale altro magico regalo hanno in serbo le piantine per Giulia!",
+    text_2: "",
+    yes: null,
+    no: null,
+    start: null,
+    next: "qend",
+    options: [
+      { img: "cactus1.jpg", next: "qCactus" },
+      { img: "aloe.jpg", next: "qAloe" },
+      { img: "san.jpg", next: "qSan" }
+    ]
+  },
+  qselect: {
+    text: "E con questi magnifici doni, Giulia iniziò la sua vita da 33enne!",
+    text_2: "THE END",
+    yes: null,
+    no: null,
+    start: "q0",
+    next: null",
+    options: [
+      { img: "cactus1.jpg"}
+    ]
   }
 };
 
